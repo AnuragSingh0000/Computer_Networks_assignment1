@@ -49,7 +49,7 @@ while True:
         # Print the header and the determined IP for logging purposes
         print("Received:", data.decode().split("|")[0], "ip: ", ip)
         # Use the custom build_dns_response function to create a new DNS response packet
-        dns_response_packet = build_dns_response(packet_bytes, ip=ip)
+        dns_response_packet = build_dns_response(packet_bytes, input_ip=ip)
         # Send the newly created DNS response packet back to the client
         client_socket.sendall(dns_response_packet)
 

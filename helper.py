@@ -44,7 +44,7 @@ def get_ip(header):
                 return ip
 
 
-def build_dns_response(packet_bytes, ip):
+def build_dns_response(packet_bytes, input_ip):
     # Parse the incoming Ethernet frame down to the DNS layer
     eth = dpkt.ethernet.Ethernet(packet_bytes)
     ip = eth.data
@@ -70,7 +70,7 @@ def build_dns_response(packet_bytes, ip):
             cls=dpkt.dns.DNS_IN,
             ttl=60,
             # Convert the IP string to binary format          
-            rdata=socket.inet_aton(ip) 
+            rdata=socket.inet_aton(input_ip) 
         )
         answers.append(ans)
 
